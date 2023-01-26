@@ -3,38 +3,29 @@ type
     Count : Integer;
     L : array [1..100] of Integer;
   end;
-
-procedure AddList(n : Integer; var List : tList);
-begin
-  Inc(List.Count);
-  List.L[List.Count] := n;
-end;
- 
-procedure OutList(i : Integer; List : tList);
-begin
-  Write(List.L[i]:4);
-end;
  
 var L : tList;  i : Integer;  List : tList;
   
 begin
   
-  List.Count := 0;
-  
+  List.Count := 0; // создание списка
   Randomize;
   for i := 1 to 10 do
-    AddList(Random(100), L);
+    begin
+      Inc(List.Count);
+      List.L[List.Count] := Random(100);
+    end;
   
-  for i := 1 to 10 do
-    OutList(i, L);
+  for i := 1 to 10 do // вывод всего списка
+    Write(List.L[i]:4);
   WriteLn;
   
-  List.Count := 0;
+  List.Count := 0; // вывод четных элементов списка
   for i := 1 to 10 do
     begin
-    Inc(List.Count);
-    if (List.Count mod 2 = 0) then
-      OutList(i, L);
+      Inc(List.Count);
+      if (List.Count mod 2 = 0) then
+        Write(List.L[i]:4);
     end;
     
     
